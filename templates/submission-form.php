@@ -70,7 +70,7 @@
         
         <!-- Hidden fields -->
         <input type="hidden" name="action" value="gps_submit_post">
-        <input type="hidden" name="nonce" value="<?php echo wp_create_nonce('gps_submission_nonce'); ?>">
+        <input type="hidden" name="nonce" value="<?php echo wp_create_nonce('gps_submit_post_nonce'); ?>">
         
         <!-- Submit Button -->
         <div class="d-grid gap-2 col-md-6 mx-auto">

@@ -1,52 +1,95 @@
 <?php
+/**
+ * Shortcode functionality for the Guest Post Submission plugin
+ *
+ * @package Guest_Post_Submission
+ */
+
+// If this file is called directly, abort.
+if (!defined('WPINC')) {
+    die;
+}
+
+/**
+ * Class GPS_Shortcode
+ * 
+ * Handles the shortcode functionality for the Guest Post Submission plugin
+ */
 class GPS_Shortcode {
+
+    /**
+     * Initialize the class
+     */
     public function __construct() {
-        add_shortcode('guest_post_form', array($this, 'render_form'));
+        add_shortcode('guest_post_form', array($this, 'render_submission_form'));
         add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'));
+        add_action('wp_ajax_gps_submit_post', array($this, 'handle_form_submission'));
+        add_action('wp_ajax_nopriv_gps_submit_post', array($this, 'handle_form_submission'));
     }
-    
+
+    /**
+     * Enqueue scripts and styles for the frontend
+     */
     public function enqueue_scripts() {
-        // Enqueue only when shortcode is used
+        // Only enqueue on pages where the shortcode is used
         global $post;
         if (is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'guest_post_form')) {
-            // Enqueue Bootstrap CSS
-            wp_enqueue_style('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css', array(), '5.3.0');
-            
-            // Enqueue Bootstrap Icons
-            wp_enqueue_style('bootstrap-icons', 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css', array(), '1.10.0');
-            
-            // Enqueue custom CSS
-            wp_enqueue_style('gps-form-style', GPS_PLUGIN_URL . 'public/css/form.css', array('bootstrap'), GPS_VERSION);
-            
-            // Enqueue Bootstrap JS
-            wp_enqueue_script('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js', array('jquery'), '5.3.0', true);
-            
-            // Make sure jQuery is loaded
-            wp_enqueue_script('jquery');
-            
-            // Properly enqueue WordPress editor scripts
+            // Enqueue WordPress's built-in TinyMCE
             wp_enqueue_editor();
             
-            // Enqueue custom JS - make sure it loads after TinyMCE
-            wp_enqueue_script('gps-form-script', GPS_PLUGIN_URL . 'public/js/form.js', array('jquery', 'bootstrap', 'editor'), GPS_VERSION, true);
+            // Enqueue React bundle
+            wp_enqueue_script(
+                'gps-frontend-script',
+                GPS_PLUGIN_URL . 'assets/js/bundle.js',
+                array('jquery'),
+                GPS_VERSION,
+                true
+            );
             
-            // Add AJAX support
-            wp_localize_script('gps-form-script', 'gps_ajax', array(
-                'ajax_url' => admin_url('admin-ajax.php'),
-                'nonce' => wp_create_nonce('gps_submission_nonce')
-            ));
+            // Pass data to JavaScript
+            wp_localize_script(
+                'gps-frontend-script',
+                'gpsData',
+                array(
+                    'ajax_url' => admin_url('admin-ajax.php'),
+                    'nonce' => wp_create_nonce('gps_submit_post_nonce'),
+                    'tinymce_url' => includes_url('js/tinymce/')
+                )
+            );
         }
     }
-    
-    public function render_form() {
-        // Check if user is allowed to submit (IP limit check)
-        $validator = new GPS_Submission_Validator();
-        if (!$validator->can_submit()) {
-            return '<div class="alert alert-warning">' . __('You have reached the submission limit. Please try again later.', 'guest-post-submission') . '</div>';
+
+    /**
+     * Render the submission form shortcode
+     *
+     * @return string The HTML output for the form
+     */
+    public function render_submission_form() {
+        // Return the container for React to render into
+        return '<div id="gps-submission-form" class="gps-form-wrapper"></div>';
+    }
+
+    /**
+     * Handle form submission via AJAX
+     */
+    public function handle_form_submission() {
+        // Use the form handler class to process the submission
+        $form_handler = new GPS_Form_Handler();
+        $result = $form_handler->process_submission($_POST, 'gps_submit_post_nonce');
+
+        if (is_wp_error($result)) {
+            wp_send_json_error(array(
+                'message' => $result->get_error_message(),
+                'errors' => array(
+                    $result->get_error_code() => $result->get_error_message()
+                )
+            ));
+        } else {
+            wp_send_json_success(array(
+                'message' => $result['message'],
+                'post_id' => $result['post_id'],
+                'image_error' => $result['image_error']
+            ));
         }
-        
-        ob_start();
-        include GPS_PLUGIN_DIR . 'templates/submission-form.php';
-        return ob_get_clean();
     }
 }

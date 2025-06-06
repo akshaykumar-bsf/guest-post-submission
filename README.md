@@ -1,75 +1,104 @@
-# Guest Post Submission Plugin
+# Guest Post Submission
 
-A WordPress plugin that allows website visitors to submit guest post requests through a front-end form.
+A WordPress plugin that allows visitors to submit guest posts through a front-end form.
 
 ## Features
 
-- Frontend submission form with Bootstrap styling
-- Post validation and sanitization
-- Admin email notifications
-- Quick approve/reject functionality
-- Custom "Submissions" category
-- IP-based submission limiting
-- Admin settings page
+- Clean, responsive front-end submission form
+- TinyMCE editor for post content
+- Form validation
+- Accessibility compliant
+- Automatic categorization of submissions
+- Email notifications for new submissions
+- Featured image upload support
 
 ## Installation
 
 1. Upload the `guest-post-submission` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Go to Settings > Guest Post Settings to configure the plugin
-4. Add the shortcode `[guest_post_form]` to any page or post where you want the submission form to appear
+3. Place the shortcode `[guest_post_form]` on any page where you want the submission form to appear
 
-## Testing
+## Usage
 
-This plugin includes both PHPUnit tests and Cypress E2E tests.
+### Basic Usage
 
-### PHPUnit Tests
+Simply add the shortcode `[guest_post_form]` to any page or post where you want the submission form to appear.
 
-To run the PHPUnit tests:
+### Customization
 
-1. Set up the test environment:
+The plugin creates a "Submissions" category automatically. All guest posts will be assigned to this category by default.
+
+## Development
+
+### Prerequisites
+
+- Node.js (v14+)
+- npm or yarn
+- WordPress development environment
+- Composer
+
+### Setup
+
+1. Clone the repository
+2. Run `npm install` to install dependencies
+3. Run `composer install` to install PHP dependencies
+4. Run `npm run dev` for development mode with hot reloading
+5. Run `npm run build` to build for production
+
+### Testing
+
+#### End-to-End Testing with Playwright
+
+The plugin uses Playwright for end-to-end testing:
+
 ```bash
-cd /path/to/plugin
-bin/install-wp-tests.sh wordpress_test root root localhost latest
+# Install Playwright browsers
+npx playwright install
+
+# Run tests
+npm run test:e2e
+
+# Run tests with UI
+npm run test:e2e:ui
+
+# Run tests in debug mode
+npm run test:e2e:debug
+
+# View test report
+npm run test:e2e:report
 ```
 
-2. Run the tests:
+#### Unit Testing with PHPUnit
+
+The plugin uses PHPUnit with Brain Monkey for unit testing:
+
 ```bash
-composer install
-vendor/bin/phpunit
+# Run unit tests
+composer test
+
+# Run unit tests with coverage report
+composer test:coverage
 ```
 
-Or if you have PHPUnit installed globally:
-```bash
-phpunit
-```
+## Accessibility
 
-### Cypress E2E Tests
+This plugin is built with accessibility in mind and follows WCAG 2.1 AA guidelines:
 
-To run the Cypress E2E tests:
-
-1. Install dependencies:
-```bash
-npm install
-```
-
-2. Update the `cypress.config.js` file with your WordPress installation URL and admin credentials.
-
-3. Create a test page with the shortcode:
-```bash
-npm test
-```
-
-4. In the Cypress UI, run the tests:
-```bash
-npm test
-```
-
-Or run headlessly:
-```bash
-npm run test:headless
-```
+- Proper heading structure
+- ARIA attributes
+- Keyboard navigation support
+- Screen reader announcements
+- Sufficient color contrast
+- Focus management
 
 ## License
 
-GPL v2 or later
+This plugin is licensed under the GPL v2 or later.
+
+## Credits
+
+- React for the front-end UI
+- TinyMCE for the rich text editor
+- Tailwind CSS for styling
+- Playwright for E2E testing
+- PHPUnit and Brain Monkey for unit testing

@@ -1,11 +1,40 @@
 {
-    "name": "akshaykumar/guest-post-submission",
-    "description": "Guest Post Submission WordPress Plugin",
+    "name": "your-vendor/guest-post-submission",
+    "description": "WordPress plugin for guest post submissions",
     "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
     "require": {
         "php": ">=7.4"
     },
     "require-dev": {
-        "yoast/phpunit-polyfills": "^4.0"
+        "phpunit/phpunit": "^9.5",
+        "yoast/phpunit-polyfills": "^1.0",
+        "brain/monkey": "^2.6",
+        "mockery/mockery": "^1.5",
+        "wp-coding-standards/wpcs": "^2.3",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2"
+    },
+    "autoload": {
+        "classmap": [
+            "includes/",
+            "admin/",
+            "public/"
+        ]
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/"
+        ]
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test:coverage": "phpunit --coverage-html coverage",
+        "phpcs": "phpcs --standard=WordPress",
+        "phpcbf": "phpcbf --standard=WordPress"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     }
 }

@@ -53,6 +53,14 @@ function gps_deactivate() {
     // as it might contain posts that should be preserved
 }
 
+/**
+ * Load plugin text domain for translations.
+ */
+function gps_load_textdomain() {
+    load_plugin_textdomain('guest-post-submission', false, dirname(plugin_basename(__FILE__)) . '/languages');
+}
+add_action('plugins_loaded', 'gps_load_textdomain');
+
 // Load email logger in development environments
 if (defined('WP_DEBUG') && WP_DEBUG) {
     require_once GPS_PLUGIN_DIR . 'includes/class-email-logger.php';
