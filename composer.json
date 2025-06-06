@@ -1,0 +1,11 @@
+{
+    "name": "akshaykumar/guest-post-submission",
+    "description": "Guest Post Submission WordPress Plugin",
+    "type": "wordpress-plugin",
+    "require": {
+        "php": ">=7.4"
+    },
+    "require-dev": {
+        "yoast/phpunit-polyfills": "^4.0"
+    }
+}

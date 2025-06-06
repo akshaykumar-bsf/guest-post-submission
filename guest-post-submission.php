@@ -53,6 +53,11 @@ function gps_deactivate() {
     // as it might contain posts that should be preserved
 }
 
+// Load email logger in development environments
+if (defined('WP_DEBUG') && WP_DEBUG) {
+    require_once GPS_PLUGIN_DIR . 'includes/class-email-logger.php';
+}
+
 // Load plugin classes
 require_once GPS_PLUGIN_DIR . 'includes/class-form-handler.php';
 require_once GPS_PLUGIN_DIR . 'includes/class-email-notifications.php';

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<phpunit
+	bootstrap="tests/phpunit/bootstrap.php"
+	backupGlobals="false"
+	colors="true"
+	convertErrorsToExceptions="true"
+	convertNoticesToExceptions="true"
+	convertWarningsToExceptions="true"
+	>
+	<php>
+		<env name="WP_PHPUNIT__TESTS_CONFIG" value="/var/folders/f3/pqg2sxs17gbf3t9mmbd5ryh00000gn/T/wordpress-tests-lib/wp-tests-config.php" />
+		<env name="WP_PHPUNIT__DIR" value="/var/folders/f3/pqg2sxs17gbf3t9mmbd5ryh00000gn/T/wordpress-tests-lib" />
+	</php>
+	<testsuites>
+		<testsuite name="guest-post-submission">
+			<directory prefix="test-" suffix=".php">./tests/phpunit</directory>
+		</testsuite>
+	</testsuites>
+</phpunit>

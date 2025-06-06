@@ -15,6 +15,22 @@ jQuery(document).ready(function($) {
     return content;
   }
 
+  // Function to show TinyMCE error in a more prominent way
+  function showTinyMCEError(message) {
+    // Remove any existing error message
+    $('#tinymce-error-alert').remove();
+    
+    // Add a prominent error message above the editor
+    $('#post_content_wrapper').before(
+      '<div id="tinymce-error-alert" class="alert alert-danger mb-2">' +
+      '<i class="bi bi-exclamation-triangle-fill me-2"></i>' + 
+      message + '</div>'
+    );
+    
+    // Also add the border for visual indication
+    $('#post_content_wrapper').addClass('border border-danger rounded');
+  }
+
   // Form validation and submission
   $('#gps-submission-form').on('submit', function(e) {
     e.preventDefault();
@@ -41,15 +57,11 @@ jQuery(document).ready(function($) {
     let content = getTinyMCEContent();
     
     if (!content || content.length < 100) {
-      $('#post_content_wrapper').addClass('border border-danger rounded');
-      // Add a visible error message
-      if (!$('#content-error-message').length) {
-        $('#post_content_wrapper').after('<div id="content-error-message" class="text-danger mt-1">Post content is too short. Please write at least 100 characters.</div>');
-      }
+      showTinyMCEError('Post content is too short. Please write at least 100 characters.');
       isValid = false;
     } else {
+      $('#tinymce-error-alert').remove();
       $('#post_content_wrapper').removeClass('border border-danger rounded');
-      $('#content-error-message').remove();
     }
     
     // Validate author name

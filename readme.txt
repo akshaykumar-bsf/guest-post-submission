@@ -25,6 +25,20 @@ Guest Post Submission is a WordPress plugin that allows website visitors to subm
 
 Simply add the shortcode `[guest_post_form]` to any page or post where you want the submission form to appear.
 
+= Configuration =
+
+1. Go to Settings > Guest Post Settings to configure:
+   * Default category for submissions
+   * IP submission limit (set to 0 for unlimited)
+   * Notification email address
+   * Email subject and template
+
+= Shortcode Options =
+
+The basic shortcode usage is:
+
+`[guest_post_form]`
+
 == Installation ==
 
 1. Upload the `guest-post-submission` folder to the `/wp-content/plugins/` directory
