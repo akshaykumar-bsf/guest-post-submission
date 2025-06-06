@@ -21,11 +21,14 @@ class GPS_Shortcode {
             // Enqueue Bootstrap JS
             wp_enqueue_script('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js', array('jquery'), '5.3.0', true);
             
-            // Enqueue custom JS
-            wp_enqueue_script('gps-form-script', GPS_PLUGIN_URL . 'public/js/form.js', array('jquery', 'bootstrap'), GPS_VERSION, true);
+            // Make sure jQuery is loaded
+            wp_enqueue_script('jquery');
             
-            // Add wp_editor scripts if using rich text editor
+            // Properly enqueue WordPress editor scripts
             wp_enqueue_editor();
+            
+            // Enqueue custom JS - make sure it loads after TinyMCE
+            wp_enqueue_script('gps-form-script', GPS_PLUGIN_URL . 'public/js/form.js', array('jquery', 'bootstrap', 'editor'), GPS_VERSION, true);
             
             // Add AJAX support
             wp_localize_script('gps-form-script', 'gps_ajax', array(

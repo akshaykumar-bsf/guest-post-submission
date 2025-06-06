@@ -25,6 +25,12 @@
                 'tinymce' => array(
                     'toolbar1' => 'formatselect,bold,italic,bullist,numlist,blockquote,link,unlink,undo,redo',
                     'toolbar2' => '',
+                    'setup' => 'function(ed) {
+                        ed.on("change", function() {
+                            // Update the textarea with the TinyMCE content
+                            tinymce.triggerSave();
+                        });
+                    }'
                 ),
             ));
             ?>

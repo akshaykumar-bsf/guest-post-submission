@@ -1,4 +1,20 @@
 jQuery(document).ready(function($) {
+  // Function to get TinyMCE content safely
+  function getTinyMCEContent() {
+    let content = '';
+    
+    // Check if TinyMCE is active and initialized
+    if (typeof tinyMCE !== 'undefined' && tinyMCE.get('post_content') && !tinyMCE.get('post_content').isHidden()) {
+      // Get content from visual editor
+      content = tinyMCE.get('post_content').getContent();
+    } else {
+      // Fallback to textarea
+      content = $('#post_content').val();
+    }
+    
+    return content;
+  }
+
   // Form validation and submission
   $('#gps-submission-form').on('submit', function(e) {
     e.preventDefault();
@@ -8,6 +24,7 @@ jQuery(document).ready(function($) {
     $('#gps-form-success').hide();
     $('#gps-form-error').hide();
     $('#gps-form-loading').hide();
+    $('#content-error-message').remove();
     
     // Client-side validation
     let isValid = true;
@@ -20,19 +37,19 @@ jQuery(document).ready(function($) {
       $('#post_title').removeClass('is-invalid');
     }
     
-    // Validate content (if using TinyMCE)
-    let content = '';
-    if (typeof tinyMCE !== 'undefined' && tinyMCE.get('post_content')) {
-      content = tinyMCE.get('post_content').getContent();
-    } else {
-      content = $('#post_content').val();
-    }
+    // Validate content using our helper function
+    let content = getTinyMCEContent();
     
     if (!content || content.length < 100) {
       $('#post_content_wrapper').addClass('border border-danger rounded');
+      // Add a visible error message
+      if (!$('#content-error-message').length) {
+        $('#post_content_wrapper').after('<div id="content-error-message" class="text-danger mt-1">Post content is too short. Please write at least 100 characters.</div>');
+      }
       isValid = false;
     } else {
       $('#post_content_wrapper').removeClass('border border-danger rounded');
+      $('#content-error-message').remove();
     }
     
     // Validate author name
@@ -89,6 +106,11 @@ jQuery(document).ready(function($) {
     
     // Prepare form data for AJAX submission
     var formData = new FormData(this);
+    
+    // Make sure we're sending the TinyMCE content
+    if (typeof tinyMCE !== 'undefined' && tinyMCE.get('post_content')) {
+      formData.set('post_content', getTinyMCEContent());
+    }
     
     // AJAX submission
     $.ajax({
@@ -149,6 +171,17 @@ jQuery(document).ready(function($) {
           $(this).addClass('is-invalid');
         }
       }
+    }
+  });
+  
+  // Initialize TinyMCE if it's not already initialized
+  $(window).on('load', function() {
+    if (typeof tinyMCE !== 'undefined' && !tinyMCE.get('post_content')) {
+      setTimeout(function() {
+        if (typeof tinyMCE.execCommand === 'function') {
+          tinyMCE.execCommand('mceAddEditor', false, 'post_content');
+        }
+      }, 500);
     }
   });
 });
