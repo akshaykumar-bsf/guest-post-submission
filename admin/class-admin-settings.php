@@ -101,7 +101,20 @@ class GPS_Admin_Settings {
     
     public function default_category_callback() {
         $options = get_option('gps_settings');
-        $default_category = isset($options['default_category']) ? $options['default_category'] : get_option('default_category');
+        
+        // Check if we have a default category set
+        if (!isset($options['default_category'])) {
+            // Try to get the Submissions category
+            $submissions_cat = term_exists('Submissions', 'category');
+            if ($submissions_cat) {
+                $default_category = is_array($submissions_cat) ? $submissions_cat['term_id'] : $submissions_cat;
+            } else {
+                // Fall back to the site's default category
+                $default_category = get_option('default_category');
+            }
+        } else {
+            $default_category = $options['default_category'];
+        }
         
         wp_dropdown_categories(array(
             'name' => 'gps_settings[default_category]',
@@ -109,6 +122,8 @@ class GPS_Admin_Settings {
             'show_option_none' => __('Select a category', 'guest-post-submission'),
             'option_none_value' => '0'
         ));
+        
+        echo '<p class="description">' . __('Select the category where guest post submissions will be filed. The "Submissions" category was created automatically.', 'guest-post-submission') . '</p>';
     }
     
     public function ip_limit_callback() {

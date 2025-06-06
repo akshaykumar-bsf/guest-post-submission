@@ -10,7 +10,20 @@ class GPS_Post_Creator {
         
         // Get default category from settings
         $options = get_option('gps_settings', array());
-        $default_category = isset($options['default_category']) ? $options['default_category'] : get_option('default_category');
+        
+        // Check if we have a default category set
+        if (!isset($options['default_category'])) {
+            // Try to get the Submissions category
+            $submissions_cat = term_exists('Submissions', 'category');
+            if ($submissions_cat) {
+                $default_category = is_array($submissions_cat) ? $submissions_cat['term_id'] : $submissions_cat;
+            } else {
+                // Fall back to the site's default category
+                $default_category = get_option('default_category');
+            }
+        } else {
+            $default_category = $options['default_category'];
+        }
         
         // Create post array
         $post_data = array(
