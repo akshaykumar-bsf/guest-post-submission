@@ -1,82 +1,77 @@
-.gps-form-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+/* Bootstrap enhancements */
+.card {
+  border-radius: 0.5rem;
+  transition: all 0.2s ease-in-out;
 }
 
-.gps-form-group {
-    margin-bottom: 20px;
+.form-control:focus {
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
 }
 
-.gps-form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+.btn-primary {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  transition: all 0.2s ease-in-out;
 }
 
-.gps-form-group input[type="text"],
-.gps-form-group input[type="email"],
-.gps-form-group textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
+.btn-primary:hover {
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
 }
 
-.gps-form-group textarea {
-    resize: vertical;
-    min-height: 100px;
+/* Style for TinyMCE editor */
+.mce-container {
+  border-radius: 0.25rem;
 }
 
-.gps-submit-button {
-    background-color: #0073aa;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+/* Loading spinner animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-.gps-submit-button:hover {
-    background-color: #005177;
+.spinner-border {
+  animation: spin 1s linear infinite;
 }
 
+/* Legacy styles for non-Bootstrap elements */
 .gps-form-message {
-    margin-top: 20px;
-    padding: 10px;
-    border-radius: 4px;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 4px;
 }
 
 .gps-form-message.error {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
 }
 
 .gps-form-message.success {
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
 }
 
 .gps-form-message.loading {
-    background-color: #e2f3f7;
-    color: #0c5460;
-    border: 1px solid #bee5eb;
+  background-color: #e2f3f7;
+  color: #0c5460;
+  border: 1px solid #bee5eb;
 }
 
-span.required {
-    color: #d63638;
+/* Ensure WordPress editor fits nicely */
+.wp-editor-wrap {
+  width: 100%;
 }
 
-.description {
-    font-size: 12px;
-    color: #666;
-    margin-top: 5px;
+.wp-editor-container {
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .d-grid.col-md-6 {
+    width: 100%;
+  }
 }
