@@ -1,0 +1,9 @@
+{
+    "redefinable-internals": [
+        "ob_start",
+        "ob_get_clean",
+        "date",
+        "time",
+        "strtotime"
+    ]
+}

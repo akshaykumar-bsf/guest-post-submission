@@ -1,0 +1,148 @@
+/* Custom styles for the guest post submission form */
+
+/* Form container */
+.gps-form-container {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Form fields */
+.gps-form-container input,
+.gps-form-container textarea,
+.gps-form-container select {
+  transition: border-color 0.15s ease-in-out;
+}
+
+.gps-form-container input:focus,
+.gps-form-container textarea:focus,
+.gps-form-container select:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+}
+
+/* Error styles */
+.gps-form-container .error-field {
+  border-color: #ef4444 !important;
+}
+
+/* Button styles */
+.bg-primary {
+  background-color: #4f46e5;
+}
+
+.bg-primary-dark {
+  background-color: #4338ca;
+}
+
+/* File input styling */
+input[type="file"] {
+  padding: 0.5rem;
+  font-size: 0.875rem;
+}
+
+input[type="file"]::file-selector-button {
+  border: 1px solid #d1d5db;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+  background-color: #f9fafb;
+  margin-right: 0.75rem;
+  font-size: 0.75rem;
+  transition: background-color 0.15s;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background-color: #f3f4f6;
+}
+
+/* TinyMCE customizations */
+.tox-tinymce {
+  border-color: #d1d5db !important;
+  border-radius: 0.25rem !important;
+}
+
+.tox .tox-toolbar__group {
+  border-color: #e5e7eb !important;
+}
+
+/* Success and error messages */
+.gps-form-container .success-message {
+  border-left: 4px solid #10b981;
+}
+
+.gps-form-container .error-message {
+  border-left: 4px solid #ef4444;
+}
+
+/* Focus styles for accessibility */
+.gps-form-container *:focus-visible {
+  outline: 2px solid #4f46e5;
+  outline-offset: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .gps-form-container button[type="submit"] {
+    width: 100%;
+  }
+}
+
+/* Accessibility enhancements */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* High contrast mode support */
+@media (forced-colors: active) {
+  .gps-form-container button {
+    border: 2px solid ButtonText;
+  }
+  
+  .gps-form-container input,
+  .gps-form-container textarea {
+    border: 1px solid ButtonText;
+  }
+  
+  .gps-form-container input:focus,
+  .gps-form-container textarea:focus {
+    outline: 2px solid Highlight;
+  }
+}
+
+/* Focus indicator for TinyMCE */
+.editor-wrapper.focused {
+  outline: 2px solid #4f46e5;
+  outline-offset: 2px;
+  border-radius: 0.25rem;
+}
+
+.editor-wrapper.has-error {
+  outline: 2px solid #ef4444;
+}
+
+/* Keyboard navigation improvements */
+.gps-form-container button:focus-visible,
+.gps-form-container input:focus-visible,
+.gps-form-container textarea:focus-visible,
+.gps-form-container select:focus-visible {
+  outline: 3px solid #4f46e5;
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .gps-form-container * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}

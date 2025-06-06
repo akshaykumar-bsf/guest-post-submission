@@ -1,0 +1,317 @@
+# Copyright (C) 2025 Your Name
+# This file is distributed under the same license as the Guest Post Submission plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Guest Post Submission 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/guest-post-submission\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Spanish (Spain) <es@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-06-06T07:00:00+00:00\n"
+"PO-Revision-Date: 2025-06-06 07:00+0000\n"
+"X-Generator: WP-CLI 2.8.1\n"
+"X-Domain: guest-post-submission\n"
+"Language: es_ES\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. Plugin Name of the plugin
+msgid "Guest Post Submission"
+msgstr "Envío de Artículos de Invitados"
+
+#. Plugin URI of the plugin
+msgid "https://yourwebsite.com/guest-post-submission"
+msgstr "https://yourwebsite.com/guest-post-submission"
+
+#. Description of the plugin
+msgid "Allows visitors to submit guest posts through a front-end form."
+msgstr "Permite a los visitantes enviar artículos de invitados a través de un formulario."
+
+#. Author of the plugin
+msgid "Your Name"
+msgstr "Tu Nombre"
+
+#. Author URI of the plugin
+msgid "https://yourwebsite.com"
+msgstr "https://yourwebsite.com"
+
+#: public/class-shortcode.php:45
+msgid "You have reached the submission limit. Please try again later."
+msgstr "Has alcanzado el límite de envíos. Por favor, inténtalo de nuevo más tarde."
+
+#: templates/submission-form.php:3
+msgid "Submit a Guest Post"
+msgstr "Enviar un Artículo de Invitado"
+
+#: templates/submission-form.php:8
+msgid "Post Title"
+msgstr "Título del Artículo"
+
+#: templates/submission-form.php:10
+msgid "Please enter a post title."
+msgstr "Por favor, introduce un título para el artículo."
+
+#: templates/submission-form.php:15
+msgid "Post Content"
+msgstr "Contenido del Artículo"
+
+#: templates/submission-form.php:41
+msgid "Please enter post content (minimum 100 characters)."
+msgstr "Por favor, introduce el contenido del artículo (mínimo 100 caracteres)."
+
+#: templates/submission-form.php:46
+msgid "Your Name"
+msgstr "Tu Nombre"
+
+#: templates/submission-form.php:48
+msgid "Please enter your name."
+msgstr "Por favor, introduce tu nombre."
+
+#: templates/submission-form.php:53
+msgid "Your Email"
+msgstr "Tu Email"
+
+#: templates/submission-form.php:55
+msgid "Please enter a valid email address."
+msgstr "Por favor, introduce una dirección de email válida."
+
+#: templates/submission-form.php:61
+msgid "About You"
+msgstr "Sobre Ti"
+
+#: templates/submission-form.php:63
+msgid "Please tell us a bit about yourself."
+msgstr "Por favor, cuéntanos un poco sobre ti."
+
+#: templates/submission-form.php:68
+msgid "Featured Image"
+msgstr "Imagen Destacada"
+
+#: templates/submission-form.php:70
+msgid "Maximum file size: 2MB. Recommended dimensions: 1200x628 pixels."
+msgstr "Tamaño máximo de archivo: 2MB. Dimensiones recomendadas: 1200x628 píxeles."
+
+#: templates/submission-form.php:78
+msgid "Submit Post"
+msgstr "Enviar Artículo"
+
+#: templates/submission-form.php:86
+msgid "Thanks for your submission! We'll review and get back soon."
+msgstr "¡Gracias por tu envío! Lo revisaremos y te responderemos pronto."
+
+#: templates/submission-form.php:90
+msgid "There was an error submitting your post. Please try again."
+msgstr "Hubo un error al enviar tu artículo. Por favor, inténtalo de nuevo."
+
+#: templates/submission-form.php:94
+msgid "Loading..."
+msgstr "Cargando..."
+
+#: templates/submission-form.php:96
+msgid "Submitting your post..."
+msgstr "Enviando tu artículo..."
+
+#: includes/class-form-handler.php:11
+msgid "Security check failed"
+msgstr "Comprobación de seguridad fallida"
+
+#: includes/class-form-handler.php:33
+msgid "Your post has been submitted successfully and is awaiting review."
+msgstr "Tu artículo ha sido enviado correctamente y está pendiente de revisión."
+
+#: includes/class-submission-validator.php:25
+msgid "Post title is required."
+msgstr "El título del artículo es obligatorio."
+
+#: includes/class-submission-validator.php:29
+msgid "Post content is required."
+msgstr "El contenido del artículo es obligatorio."
+
+#: includes/class-submission-validator.php:33
+msgid "Post content must be at least 100 characters."
+msgstr "El contenido del artículo debe tener al menos 100 caracteres."
+
+#: includes/class-submission-validator.php:37
+msgid "Author name is required."
+msgstr "El nombre del autor es obligatorio."
+
+#: includes/class-submission-validator.php:41
+msgid "Author email is required."
+msgstr "El email del autor es obligatorio."
+
+#: includes/class-submission-validator.php:45
+msgid "Please enter a valid email address."
+msgstr "Por favor, introduce una dirección de email válida."
+
+#: includes/class-submission-validator.php:49
+msgid "Author bio is required."
+msgstr "La biografía del autor es obligatoria."
+
+#: includes/class-submission-validator.php:55
+msgid "Featured image must be a valid image file (jpg, jpeg, png, gif)."
+msgstr "La imagen destacada debe ser un archivo de imagen válido (jpg, jpeg, png, gif)."
+
+#: includes/class-submission-validator.php:59
+msgid "Featured image size must be less than 2MB."
+msgstr "El tamaño de la imagen destacada debe ser menor de 2MB."
+
+#: admin/class-admin-settings.php:15
+msgid "Guest Post Settings"
+msgstr "Configuración de Artículos de Invitados"
+
+#: admin/class-admin-settings.php:16
+msgid "Guest Posts"
+msgstr "Artículos de Invitados"
+
+#: admin/class-admin-settings.php:39
+msgid "General Settings"
+msgstr "Configuración General"
+
+#: admin/class-admin-settings.php:46
+msgid "Default Category"
+msgstr "Categoría Predeterminada"
+
+#: admin/class-admin-settings.php:54
+msgid "Notification Email"
+msgstr "Email de Notificación"
+
+#: admin/class-admin-settings.php:62
+msgid "Email Subject"
+msgstr "Asunto del Email"
+
+#: admin/class-admin-settings.php:70
+msgid "Email Template"
+msgstr "Plantilla de Email"
+
+#: admin/class-admin-settings.php:78
+msgid "Submission Limit"
+msgstr "Límite de Envíos"
+
+#: admin/class-admin-settings.php:86
+msgid "Limit Period (hours)"
+msgstr "Período Límite (horas)"
+
+#: admin/class-admin-settings.php:94
+msgid "Required Fields"
+msgstr "Campos Obligatorios"
+
+#: admin/class-admin-settings.php:102
+msgid "Allow Featured Image"
+msgstr "Permitir Imagen Destacada"
+
+#: admin/class-admin-settings.php:110
+msgid "Auto Approve Posts"
+msgstr "Aprobar Artículos Automáticamente"
+
+#: admin/class-admin-settings.php:118
+msgid "Success Message"
+msgstr "Mensaje de Éxito"
+
+#: admin/class-admin-settings.php:126
+msgid "Error Message"
+msgstr "Mensaje de Error"
+
+#: admin/class-admin-settings.php:134
+msgid "Form Title"
+msgstr "Título del Formulario"
+
+#: admin/class-admin-settings.php:142
+msgid "Submit Button Text"
+msgstr "Texto del Botón de Envío"
+
+#: admin/class-admin-settings.php:150
+msgid "Form CSS Class"
+msgstr "Clase CSS del Formulario"
+
+#: admin/class-admin-settings.php:158
+msgid "Enable reCAPTCHA"
+msgstr "Habilitar reCAPTCHA"
+
+#: admin/class-admin-settings.php:166
+msgid "reCAPTCHA Site Key"
+msgstr "Clave del Sitio reCAPTCHA"
+
+#: admin/class-admin-settings.php:174
+msgid "reCAPTCHA Secret Key"
+msgstr "Clave Secreta de reCAPTCHA"
+
+#: admin/class-post-management.php:25
+msgid "Approve"
+msgstr "Aprobar"
+
+#: admin/class-post-management.php:26
+msgid "Reject"
+msgstr "Rechazar"
+
+#: admin/class-post-management.php:27
+msgid "Guest Post"
+msgstr "Artículo de Invitado"
+
+#: admin/class-post-management.php:28
+msgid "Author"
+msgstr "Autor"
+
+#: admin/class-post-management.php:29
+msgid "Email"
+msgstr "Email"
+
+#: admin/class-post-management.php:30
+msgid "IP Address"
+msgstr "Dirección IP"
+
+#: admin/class-post-management.php:31
+msgid "Submission Date"
+msgstr "Fecha de Envío"
+
+#: admin/class-post-management.php:85
+msgid "Post approved successfully."
+msgstr "Artículo aprobado correctamente."
+
+#: admin/class-post-management.php:87
+msgid "Failed to approve post."
+msgstr "Error al aprobar el artículo."
+
+#: admin/class-post-management.php:95
+msgid "Post rejected successfully."
+msgstr "Artículo rechazado correctamente."
+
+#: admin/class-post-management.php:97
+msgid "Failed to reject post."
+msgstr "Error al rechazar el artículo."
+
+#: includes/class-email-notifications.php:25
+msgid "New Guest Post Submission"
+msgstr "Nuevo Envío de Artículo de Invitado"
+
+#: includes/class-email-notifications.php:26
+msgid "A new guest post has been submitted and is awaiting your review."
+msgstr "Se ha enviado un nuevo artículo de invitado y está pendiente de tu revisión."
+
+#: includes/class-email-notifications.php:27
+msgid "Post Title:"
+msgstr "Título del Artículo:"
+
+#: includes/class-email-notifications.php:28
+msgid "Author Name:"
+msgstr "Nombre del Autor:"
+
+#: includes/class-email-notifications.php:29
+msgid "Author Email:"
+msgstr "Email del Autor:"
+
+#: includes/class-email-notifications.php:30
+msgid "Submission Date:"
+msgstr "Fecha de Envío:"
+
+#: includes/class-email-notifications.php:31
+msgid "Preview Post"
+msgstr "Vista Previa del Artículo"
+
+#: includes/class-email-notifications.php:32
+msgid "Approve Post"
+msgstr "Aprobar Artículo"
+
+#: includes/class-email-notifications.php:33
+msgid "Reject Post"
+msgstr "Rechazar Artículo"
