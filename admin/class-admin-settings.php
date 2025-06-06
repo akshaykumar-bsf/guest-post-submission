@@ -116,12 +116,22 @@ class GPS_Admin_Settings {
             $default_category = $options['default_category'];
         }
         
-        wp_dropdown_categories(array(
-            'name' => 'gps_settings[default_category]',
-            'selected' => $default_category,
-            'show_option_none' => __('Select a category', 'guest-post-submission'),
-            'option_none_value' => '0'
+        // Get all categories
+        $categories = get_categories(array(
+            'hide_empty' => false,
+            'orderby' => 'name',
+            'order' => 'ASC'
         ));
+        
+        echo '<select name="gps_settings[default_category]" id="default_category" class="regular-text">';
+        
+        // Add option for each category
+        foreach ($categories as $category) {
+            $selected = ($category->term_id == $default_category) ? 'selected="selected"' : '';
+            echo '<option value="' . esc_attr($category->term_id) . '" ' . $selected . '>' . esc_html($category->name) . '</option>';
+        }
+        
+        echo '</select>';
         
         echo '<p class="description">' . __('Select the category where guest post submissions will be filed. The "Submissions" category was created automatically.', 'guest-post-submission') . '</p>';
     }
